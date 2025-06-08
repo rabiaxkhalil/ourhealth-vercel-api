@@ -2,39 +2,27 @@ import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
-  const [entries, setEntries] = useState([{ content: '' }]);
+  const [journalEntry, setJournalEntry] = useState('');
   const [story, setStory] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-
-  const handleAddEntry = () => {
-    setEntries([...entries, { content: '' }]);
-  };
-
-  const handleEntryChange = (index, value) => {
-    const newEntries = [...entries];
-    newEntries[index].content = value;
-    setEntries(newEntries);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     
     try {
-      // Process entries to split by line breaks
-      const processedEntries = entries.map(entry => ({
-        entries: entry.content
-          .split('\n')
-          .map(line => line.trim())
-          .filter(line => line.length > 0) // Remove empty lines
-      }));
+      // Split the textarea content by line breaks and filter out empty lines
+      const entries = journalEntry
+        .split('\n')
+        .map(line => line.trim())
+        .filter(line => line.length > 0);
 
       const response = await fetch('/api/generate-story', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ entries: processedEntries }),
+        body: JSON.stringify({ entries }),
       });
 
       if (!response.ok) {
@@ -54,32 +42,22 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <main className={styles.main}>
-        <h1 className={styles.title}>Weekly Journal Entries</h1>
+        <h1 className={styles.title}>Journal Entry</h1>
         
         <form onSubmit={handleSubmit} className={styles.form}>
-          {entries.map((entry, index) => (
-            <div key={index} className={styles.entryContainer}>
-              <label htmlFor={`entry-${index}`}>
-                Week {index + 1} Journal Entry:
-              </label>
-              <textarea
-                id={`entry-${index}`}
-                value={entry.content}
-                onChange={(e) => handleEntryChange(index, e.target.value)}
-                placeholder="Enter your journal entry for this week..."
-                required
-                className={styles.textarea}
-              />
-            </div>
-          ))}
-          
-          <button
-            type="button"
-            onClick={handleAddEntry}
-            className={styles.addButton}
-          >
-            Add Another Week
-          </button>
+          <div className={styles.entryContainer}>
+            <label htmlFor="journal-entry">
+              Enter your journal entries (one per line):
+            </label>
+            <textarea
+              id="journal-entry"
+              value={journalEntry}
+              onChange={(e) => setJournalEntry(e.target.value)}
+              placeholder="Enter your journal entries here, one per line..."
+              required
+              className={styles.textarea}
+            />
+          </div>
           
           <button
             type="submit"
