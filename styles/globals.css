@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  .container {
+    @apply min-h-screen p-8 bg-pastel-mint;
+  }
+
+  .main {
+    @apply max-w-3xl mx-auto p-8 bg-white rounded-2xl shadow-lg;
+  }
+
+  .title {
+    @apply mb-8 text-4xl font-bold text-pastel-purple text-center;
+  }
+
+  .form {
+    @apply flex flex-col gap-6;
+  }
+
+  .entryContainer {
+    @apply flex flex-col gap-2;
+  }
+
+  .entryContainer label {
+    @apply font-semibold text-pastel-blue text-lg;
+  }
+
+  .textarea {
+    @apply min-h-[120px] p-4 border-2 border-pastel-blue rounded-xl text-base resize-y
+    focus:outline-none focus:ring-2 focus:ring-pastel-purple focus:border-transparent
+    transition-colors duration-200 bg-white/50;
+  }
+
+  .submitButton {
+    @apply px-8 py-4 bg-pastel-pink text-white rounded-xl text-lg font-bold
+    hover:bg-pastel-purple focus:outline-none focus:ring-2 focus:ring-pastel-purple focus:ring-offset-2
+    transition-all duration-200 disabled:bg-pastel-blue/50 disabled:cursor-not-allowed
+    shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+
+  .storyContainer {
+    @apply mt-12 p-8 bg-pastel-yellow/30 rounded-2xl border-2 border-pastel-yellow
+    relative overflow-hidden;
+  }
+
+  .bookFrame {
+    @apply relative bg-white p-8 rounded-lg shadow-lg
+    before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-8
+    before:bg-pastel-blue before:rounded-t-lg
+    after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-8
+    after:bg-pastel-blue after:rounded-b-lg;
+  }
+
+  .bookSpine {
+    @apply absolute left-0 top-0 bottom-0 w-4 bg-pastel-purple
+    before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2
+    before:w-2 before:h-24 before:bg-pastel-pink before:rounded-full;
+  }
+
+  .bookPages {
+    @apply relative bg-white p-8 rounded-lg shadow-inner
+    border-2 border-pastel-blue/30;
+  }
+
+  .storyContainer h2 {
+    @apply mb-4 text-2xl font-bold text-pastel-purple text-center;
+  }
+
+  .story {
+    @apply leading-relaxed text-gray-700 whitespace-pre-wrap text-lg
+    first-letter:text-3xl first-letter:font-bold first-letter:text-pastel-purple
+    first-letter:mr-1 first-letter:float-left;
+  }
+
+  .bookCorner {
+    @apply absolute w-8 h-8 bg-pastel-pink rounded-full
+    before:content-[''] before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2
+    before:w-4 before:h-4 before:bg-white before:rounded-full;
+  }
+
+  .bookCornerTopLeft {
+    @apply -top-4 -left-4;
+  }
+
+  .bookCornerTopRight {
+    @apply -top-4 -right-4;
+  }
+
+  .bookCornerBottomLeft {
+    @apply -bottom-4 -left-4;
+  }
+
+  .bookCornerBottomRight {
+    @apply -bottom-4 -right-4;
+  }
+
+  .audioControls {
+    @apply mt-6 flex flex-wrap gap-4 justify-center;
+  }
+
+  .audioButton {
+    @apply px-6 py-3 bg-pastel-blue text-white rounded-xl text-base font-semibold
+    hover:bg-pastel-purple focus:outline-none focus:ring-2 focus:ring-pastel-purple focus:ring-offset-2
+    transition-all duration-200 shadow-md hover:shadow-lg
+    flex items-center gap-2;
+  }
+
+  .audioButton:disabled {
+    @apply bg-gray-300 cursor-not-allowed;
+  }
+
+  .hidden {
+    @apply hidden;
+  }
+
+  .downloadControls {
+    @apply mt-4 flex flex-wrap gap-4 justify-center;
+  }
+
+  .downloadButton {
+    @apply px-6 py-3 bg-pastel-green text-white rounded-xl text-base font-semibold
+    hover:bg-pastel-purple focus:outline-none focus:ring-2 focus:ring-pastel-purple focus:ring-offset-2
+    transition-all duration-200 shadow-md hover:shadow-lg
+    flex items-center gap-2;
+  }
+
+  .downloadButton:disabled {
+    @apply bg-gray-300 cursor-not-allowed;
+  }
+} 
