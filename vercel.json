@@ -1,9 +1,5 @@
 {
-    "version": 2,
-    "functions": {
-      "api/generate-story.js": {
-        "runtime": "nodejs18.x"
-      }
-    }
+    "version": 2
   }
+  
   
