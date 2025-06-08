@@ -149,8 +149,4 @@
   .downloadButton:disabled {
     @apply bg-gray-300 cursor-not-allowed;
   }
-
-  .hidden {
-    @apply hidden;
-  }
 } 

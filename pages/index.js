@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Confetti from 'react-confetti';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
-import '../styles/globals.css';
 
 export default function Home() {
   const [journalEntry, setJournalEntry] = useState('');
